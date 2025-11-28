@@ -8,9 +8,11 @@ Model Context Protocol (MCP) server that exposes a single tool for finding the n
 - Install deps: `npm install`.
 - Build the project: `npm run build`.
 
-## Configure in an MCP host (example: Claude Desktop)
+## Configure in an MCP host
 
-Add an entry to `claude_desktop_config.json` (adjust the path to your clone):
+All hosts should point to the built entry: `/absolute/path/to/nearest-tailwind-colors-mcp/dist/index.js`.
+
+- **JSON-based hosts (Claude Desktop, Cursor, VS Code MCP extension)**: add this to the relevant `settings.json`/`claude_desktop_config.json`, then restart/reload:
 
 ```json
 {
@@ -23,7 +25,27 @@ Add an entry to `claude_desktop_config.json` (adjust the path to your clone):
 }
 ```
 
-Restart the client after saving the config.
+- Claude Desktop: edit `claude_desktop_config.json`.
+- Cursor: Settings → search "Model Context Protocol" → "Edit in settings.json".
+- VS Code: User/Workspace `settings.json` with the MCP/Claude extension installed.
+
+- **ChatGPT Codex (CLI and VS Code extension)**: add to `~/.codex/config.toml` (wrap in your shell if you need `nvm`/`fnm` to enforce node >= 18):
+
+```toml
+[mcp_servers.nearest_tailwind_colors]
+command = "node"
+args = ["/absolute/path/to/nearest-tailwind-colors-mcp/dist/index.js"]
+```
+
+```toml
+# with nvm
+[mcp_servers.nearest_tailwind_colors]
+command = "zsh"
+args = [
+  "-lc",
+  "export NVM_DIR=\"$HOME/.nvm\"; source \"$NVM_DIR/nvm.sh\"; nvm use 20 >/dev/null; node /absolute/path/to/nearest-tailwind-colors-mcp/dist/index.js",
+]
+```
 
 ## Available tool
 
