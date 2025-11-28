@@ -1,17 +1,26 @@
 import { defineConfig } from "vite";
 import path from "path";
+import { builtinModules } from "node:module";
+
+const external = [
+  /^@modelcontextprotocol\/sdk/,
+  "nearest-tailwind-colors",
+  "zod",
+  ...builtinModules,
+  ...builtinModules.map((m) => `node:${m}`),
+];
 
 export default defineConfig({
   build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/index.ts"),
+      formats: ["es"],
+      fileName: () => "index.js",
+    },
     outDir: "dist",
-    target: "node18",
+    target: "node20",
     rollupOptions: {
-      input: "src/index.ts",
-      output: {
-        entryFileNames: "index.js",
-        format: "esm",
-      },
-      external: ["@modelcontextprotocol/sdk", "nearest-tailwind-colors", "zod"],
+      external,
     },
     sourcemap: true,
     emptyOutDir: true,

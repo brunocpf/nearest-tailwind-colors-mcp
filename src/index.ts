@@ -21,4 +21,12 @@ server.registerTool(
 
 const transport = new StdioServerTransport();
 
-await server.connect(transport);
+async function main() {
+  await server.connect(transport);
+  console.error("nearest-tailwind-colors MCP server is running...");
+}
+
+main().catch((err) => {
+  console.error("Error starting nearest-tailwind-colors MCP server:", err);
+  process.exit(1);
+});
