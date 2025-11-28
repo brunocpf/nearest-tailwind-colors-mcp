@@ -33,41 +33,18 @@ Restart the client after saving the config.
   - `excludeColors` (string[], optional): Tailwind color names to skip (e.g. `["white", "black", "neutral-950"]`).
   - `space` (enum, optional): comparison color space (`cmyk`, `gl`, `hcg`, `hcl`, `hsi`, `hsl`, `hsv`, `lab`, `lch`, `oklab`, `oklch`, `rgb`; default `lab`).
 
-## Example call
-
-Note: these responses are just examples and aren't accurate, run the tool to get real results.
-
-```json
-{
-  "tool": "nearest_tailwind_colors",
-  "input": {
-    "color": "#1d4ed8",
-    "n": 3
-  }
-}
-```
-
-Typical response:
-
-```json
-{
-  "results": [
-    { "color": "blue-700", "value": "#1d4ed8", "distance": 0 },
-    { "color": "blue-600", "value": "#2563eb", "distance": 2.4 },
-    { "color": "blue-800", "value": "#1e40af", "distance": 3.1 }
-  ]
-}
-```
-
 ## Example prompt
 
-Prompt: "What are the 3 Tailwind colors closest to #1d4ed8?"
+Prompt: "What are the 5 tailwind colors closest to the youtube logo?"
+
 Response:
 
 ```
-The 3 closest Tailwind colors to`#1d4ed8` are:
+Closest Tailwind matches to YouTube red (`#ff0000`):
 
-- `blue-700` (#1d4ed8)
-- `blue-600` (#2563eb)
-- `blue-800` (#1e40af)
+- red-600 — `#dc2626`
+- orange-600 — `#ea580c`
+- red-500 — `#ef4444`
+- red-700 — `#b91c1c`
+- orange-700 — `#c2410c`
 ```
