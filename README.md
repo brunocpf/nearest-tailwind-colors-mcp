@@ -1,4 +1,4 @@
-# nearest-tailwind-colors-mcp
+# `nearest-tailwind-colors-mcp`
 
 Model Context Protocol (MCP) server that exposes a single tool for finding the nearest Tailwind CSS palette colors to any CSS color.
 
